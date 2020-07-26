@@ -1,0 +1,146 @@
+.Body {
+    background-image: url(../img/river.jpg);
+    background-size: 100%;
+}
+.MainContent{
+    display: flex;
+    justify-content: center;
+}
+.InlinePart {
+    /* display: inline-block; */
+    width: 49%;
+}
+.InlinePart2 {
+    display: inline-block;
+    width: 25%;
+}
+.BackButton{
+    border: none;
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    background-color: #4169E1;
+    color: white;
+    margin-left: 55px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+.Title{
+    color: #FFFFFF;
+    font-size: 50px;
+}
+.SearchButton{
+    height: 30px;
+    width: 60px;
+    color: white;
+    background-color: royalblue;
+    border: none;
+}
+.User{
+    height: 80px;
+    width: 200px;
+    background-color: rgba(255,255,255,0.6);
+    float: right;
+    margin-right: 80px;
+    margin-top: 20px;
+    padding: 5px;
+}
+.UserInfo{
+    float: left;
+    width: 120px;
+    height: 100%;
+    text-align: center;
+}
+.Username{
+    color: black;
+    font-size: 20px;
+    margin-top: 5px;
+}
+.Avator{
+    height: 100%;
+    width: 75px;
+    float: right;
+    background-image: url(../img/avator.jpg);
+    background-size: 100% 100%;
+    border-radius:50%
+}
+.AccountButton{
+    width: 50px;
+    margin-top: 15px;
+}
+.CartTitle{
+    font-size: 50px;
+    color: #FFFFFF;
+    margin-top: 100px;
+}
+.AddCartBody {
+    font-size: 20px;
+    color: #FFFFFF;
+    width: 80%;
+    margin: 0 auto;
+}
+.AddCartForm{
+    background-color: rgba(255,255,255,0.7);
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+.GoodImg {
+    background-image: url(../img/milk.jpg);
+    background-size: 100% 100%;
+    width: 300px;
+    height: 300px;
+}
+.GoodInfo {
+    height: 300px;
+    width: 250px;
+}
+.GoodContent{
+    display: flex;
+    justify-content: space-between;
+}
+.Time, .Total {
+    display: flex;
+    justify-content: flex-start;
+}
+.TimeTag {
+    margin-right: 50px;
+}
+.Price {
+    display: flex;
+    justify-content: flex-start;
+}
+.PriceTag {
+    margin-right: 50px;
+}
+.TotalAmount {
+    color: #FF0000;
+}
+.Amount {
+    display: flex;
+    justify-content: flex-start;
+}
+.AmountTag {
+    margin-right: 20px;
+}
+.AmountInput {
+    width: 50px;
+    text-align: center;
+}
+.TotalTag {
+    margin-right: 50px;
+}
+.PriceTag, .AmountTag, .PriceNumber, .TimeTag, .TimeContent, .TotalTag, .TotalAmount {
+    font-size: 20px;
+}
+.AlgoButton {
+    width: 30px;
+}
+.AddButton {
+    width: 80%;
+    height: 25px;
+    border: none;
+    color: white;
+    background-color: #4169E1;
+    margin-left: 25px;
+}

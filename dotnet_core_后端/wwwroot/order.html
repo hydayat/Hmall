@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Order</title>
+		<link rel="stylesheet" type="text/css" href="css/order.css">
+	</head>
+	<body class="Body">
+		<div class="TitleDiv">
+			<h1 align="center" class="Title">
+				Order List
+				<button class="BackButton" onclick="back()"><< Store</button>
+			</h1>
+			<button style="margin-left:100px;" onclick="document.location.href='orderReport.html'">查看订单报告</button>
+		</div>
+		<div class="User">
+			<div class="UserInfo">
+				<div id="Username" class="Username"></div>
+				<div>
+					<button class="AccountButton" onclick="showCart()">Cart</button>
+					<button class="AccountButton" onclick="showOrder()">Order</button>
+				</div>
+			</div>
+			<div class="Avator" id="Avator"></div>
+			<button style="float:right;width:75px;" onclick="document.location.href='changeAvator.html'">更改头像</button>
+		</div>
+		<hr width="90%" color="antiquewhite">
+		<div class="BelowDiv">
+			<!-- <div class="BackButtonDiv">
+				<button><< Back to store</button>
+			</div> -->
+			<div class="CartDiv">
+				<div class="CartBar">
+					<div>
+						Image
+					</div>
+					<div>
+						Name
+					</div>
+					<div>
+						Date
+					</div>
+					<div>
+						Price
+					</div>
+					<div>
+						Amount
+					</div>
+					<div>
+						Total
+					</div>
+				</div>
+				<div class="CartContent" style="overflow-y:auto;">
+					<script src="js/loadOrderList.js"></script>
+				</div>
+			</div>
+		</div>
+		<script src="js/account.js"></script>
+		<script src="js/updateUsername.js"></script>
+		<script src="js/order.js"></script>
+	</body>
+</html>
+

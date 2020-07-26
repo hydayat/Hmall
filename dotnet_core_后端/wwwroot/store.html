@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Store</title>
+		<link rel="stylesheet" type="text/css" href="css/store.css">
+	</head>
+	<body class="Body">
+		<!-- 商店名 -->
+		<div class="InlinePart">
+			<h1 align="center" class="Title">H-Mall</h1>
+		</div>
+		<!-- 搜索框 -->
+		<div class="InlinePart">
+			<input value="Please enter" class="KeyInput">
+				<button class="SearchButton" onclick="alert('This button is useless.')">Search</button>
+			</input>
+		</div>
+		<!-- 用户面板 -->
+		<div class="User">
+			<!-- 用户名和按钮 -->
+			<div class="UserInfo">
+				<div id="Username" class="Username"></div>
+				<div>
+					<button class="AccountButton" onclick="showCart()">Cart</button>
+					<button class="AccountButton" onclick="showOrder()">Order</button>
+				</div>
+			</div>
+			<!-- 头像 -->
+			<div class="Avator" id="Avator"></div>
+			<button style="float:right;width:75px;" onclick="document.location.href='changeAvator.html'">更改头像</button>
+		</div>
+		<hr width="90%" color="antiquewhite">
+		<br>
+		<div class="Store">
+			<br>
+			<!-- 第一行商品 -->
+			<div class="Line">
+				<div class="Good">
+					<div id="Img1" class="ImageDiv"></div>
+					<div class="GoodInfo">
+						<div id="GoodName1" class="GoodName">M1A1</div>
+						<div id="Price1" class="Price">￥500</div>
+					</div>
+					<div class="ButtonGroup">
+						<button class="GoodButton" onclick="like(1)">Like</button><br>
+						<button class="GoodButton" onclick="buy(1)">Buy</button>
+					</div>
+				</div>
+				<div class="Good">
+					<div id="Img2" class="ImageDiv"></div>
+					<div class="GoodInfo">
+						<div id="GoodName2" class="GoodName">M1A2</div>
+						<div id="Price2" class="Price">￥480</div>
+					</div>
+					<div class="ButtonGroup">
+						<button class="GoodButton" onclick="like(2)">Like</button><br>
+						<button class="GoodButton" onclick="buy(2)">Buy</button>
+					</div>
+				</div>
+				<div class="Good">
+					<div id="Img3" class="ImageDiv"></div>
+					<div class="GoodInfo">
+						<div id="GoodName3" class="GoodName">M41</div>
+						<div id="Price3" class="Price">￥200</div>
+					</div>
+					<div class="ButtonGroup">
+						<button class="GoodButton" onclick="like(3)">Like</button><br>
+						<button class="GoodButton" onclick="buy(3)">Buy</button>
+					</div>
+				</div>
+				<div class="Good">
+					<div id="Img4" class="ImageDiv"></div>
+					<div class="GoodInfo">
+						<div id="GoodName4" class="GoodName">MarderIII</div>
+						<div id="Price4" class="Price">￥180</div>
+					</div>
+					<div class="ButtonGroup">
+						<button class="GoodButton" onclick="like(4)">Like</button><br>
+						<button class="GoodButton" onclick="buy(4)">Buy</button>
+					</div>
+				</div>
+				<div class="Good">
+					<div id="Img5" class="ImageDiv"></div>
+					<div class="GoodInfo">
+						<div id="GoodName5" class="GoodName">Merkava</div>
+						<div id="Price5" class="Price">￥320</div>
+					</div>
+					<div class="ButtonGroup">
+						<button class="GoodButton" onclick="like(5)">Like</button><br>
+						<button class="GoodButton" onclick="buy(5)">Buy</button>
+					</div>
+				</div>
+			</div>
+			<br>
+			<!-- 第二行商品 -->
+			<div class="Line">
+				<div class="Good">
+					<div id="Img6" class="ImageDiv"></div>
+					<div class="GoodInfo">
+						<div id="GoodName6" class="GoodName">Panther</div>
+						<div id="Price6" class="Price">￥240</div>
+					</div>
+					<div class="ButtonGroup">
+						<button class="GoodButton" onclick="like(6)">Like</button><br>
+						<button class="GoodButton" onclick="buy(6)">Buy</button>
+					</div>
+				</div>
+				<div class="Good">
+					<div id="Img7" class="ImageDiv"></div>
+					<div class="GoodInfo">
+						<div id="GoodName7" class="GoodName">Wespe</div>
+						<div id="Price7" class="Price">￥110</div>
+					</div>
+					<div class="ButtonGroup">
+						<button class="GoodButton" onclick="like(7)">Like</button><br>
+						<button class="GoodButton" onclick="buy(7)">Buy</button>
+					</div>
+				</div>
+				<div class="Good">
+					<div id="Img8" class="ImageDiv"></div>
+					<div class="GoodInfo">
+						<div id="GoodName8" class="GoodName">T-55A</div>
+						<div id="Price8" class="Price">￥350</div>
+					</div>
+					<div class="ButtonGroup">
+						<button class="GoodButton" onclick="like(8)">Like</button><br>
+						<button class="GoodButton" onclick="buy(8)">Buy</button>
+					</div>
+				</div>
+				<div class="Good">
+					<div id="Img9" class="ImageDiv"></div>
+					<div class="GoodInfo">
+						<div id="GoodName9" class="GoodName">StugIII</div>
+						<div id="Price9" class="Price">￥150</div>
+					</div>
+					<div class="ButtonGroup">
+						<button class="GoodButton" onclick="like(9)">Like</button><br>
+						<button class="GoodButton" onclick="buy(9)">Buy</button>
+					</div>
+				</div>
+				<div class="Good">
+					<div id="Img10" class="ImageDiv"></div>
+					<div class="GoodInfo">
+						<div id="GoodName10" class="GoodName">M109A3G</div>
+						<div id="Price10" class="Price">￥390</div>
+					</div>
+					<div class="ButtonGroup">
+						<button class="GoodButton" onclick="like(10)">Like</button><br>
+						<button class="GoodButton" onclick="buy(10)">Buy</button>
+					</div>
+				</div>
+			</div>
+			<div class="PageDiv">
+				<div class="PageButtonGroup">
+					<button class="PageButton">◀</button>
+					&nbsp; 1 / 2
+					<button class="PageButton" onclick="nextPage()">▶</button>
+				</div>
+			</div>
+		</div>
+		<script src="js/updateUsername.js"></script>
+		<script src="js/store.js"></script>
+		<script src="js/account.js"></script>
+		<script src="js/goodOpt.js"></script>
+	</body>
+</html>

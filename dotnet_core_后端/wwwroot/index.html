@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Sign In</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+	</head>
+	<body class="Body">
+		<div class="FirstDiv">
+			<div class="InlinePart">
+				<br><br><br><br><br><br><br><br><br>
+				<h1 class="WelcomeTitle" align="center">Welcome to H-mall</h1>
+				<p class="WelcomeBody">
+					Hmall is more than a buying and selling store web app – it is a lifestyle for everyone across the world. Chat
+					and make calls with friends, read news and use local services in Official Accounts and Mini Programs.
+				</p>
+			</div>
+			<div class="InlinePart">
+				<br><br><br><br><br><br><br>
+				<div class="SignInForm">
+					<br>
+					<h1 class="SignInTitle" align="center">Sign In</h1>
+					<form class="InputList">
+						<p>Username</p>
+						<input id="username" type="text" class="InputBox" value=""><br>
+						<p>Password</p>
+						<input id="password" type="password" class="InputBox" value="">
+						<button type="button" class="SignUpButton" onclick="signup()">Sign up</button>
+						<!-- <input class="SubmitButton" type="submit" onclick="login()" value="Sign in for H-mall" /> -->
+						<button type="button" class="SubmitButton" onclick="login()">Sign in for H-mall</button>
+					</form>
+				</div>
+				<p class="Direct" align="center" onclick="document.location.href = 'store.html'">Go To Store Directly >>></p>
+			</div>
+		</div>
+		<script src="js/index.js"></script>
+	</body>
+</html>
+<!--<style>-->
+<!--	@import url("css/index.css");-->
+<!--</style>-->

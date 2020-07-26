@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>顺丰运费计算</title>
+</head>
+<body style="background-image:url(img/tree.jpg);background-size:100%;">
+	<h1 align="center">顺丰运费计算</h1>
+	<div style="display:flex;justify-content:space-between;margin:0 auto;background-color: rgba(255,255,255,0.6);padding:10px;width:55%;">
+		<div>
+			<h2>始发地</h2>
+			<p>因商家在广东东莞，故始发地默认为广州东莞</p>
+			<h2>目的地</h2>
+			<div style="margin-bottom:10px;">
+				是否位于广东：
+				<select id="IsSameCitySelector" onchange="changeIsSameCity()" style="width:110px;">
+					<option value="-1">--</option>
+					<option value="1">是</option>
+					<option value="0">否</option>
+				</select>
+			</div>
+			<div id="SelectCityDiv" hidden>
+				选择目的城市：
+				<select id="CitySelector" onchange="changePlace(1)" style="width:110px;">
+					<option value="-1">--</option>
+					<option value="东莞">东莞（同城）</option>
+					<option value="广州">广州</option>
+					<option value="深圳">深圳</option>
+					<option value="江门">江门</option>
+					<option value="惠州">惠州</option>
+					<option value="佛山">佛山</option>
+					<option value="中山">中山</option>
+					<option value="珠海">珠海</option>
+					<option value="肇庆">肇庆</option>
+					<option value="清远">清远</option>
+					<option value="云浮">云浮</option>
+					<option value="阳江">阳江</option>
+					<option value="揭阳">揭阳</option>
+					<option value="茂名">茂名</option>
+					<option value="韶关">韶关</option>
+					<option value="梅州">梅州</option>
+					<option value="汕头">汕头</option>
+					<option value="湛江">湛江</option>
+					<option value="河源">河源</option>
+					<option value="潮州">潮州</option>
+					<option value="汕尾">汕尾</option>
+				</select>
+			</div>
+			<div id="SelectProvinceDiv" hidden>
+				选择目的省份：
+				<select id="ProvinceSelector" onchange="changePlace(2)" style="width:110px;">
+					<option value="-1">--</option>
+					<option value="福建">福建</option>
+					<option value="广西">广西</option>
+					<option value="江西">江西</option>
+					<option value="湖南">湖南</option>
+					<option value="海南">海南</option>
+					<option value="贵州">贵州</option>
+					<option value="安徽">安徽</option>
+					<option value="湖北">湖北</option>
+					<option value="重庆">重庆</option>
+					<option value="四川">四川</option>
+					<option value="云南">云南</option>
+					<option value="河南">河南</option>
+					<option value="上海">上海</option>
+					<option value="江苏">江苏</option>
+					<option value="浙江">浙江</option>
+					<option value="北京">北京</option>
+					<option value="天津">天津</option>
+					<option value="辽宁">辽宁</option>
+					<option value="陕西">陕西</option>
+					<option value="河北">河北</option>
+					<option value="山西">山西</option>
+					<option value="山东">山东</option>
+					<option value="甘肃">甘肃</option>
+					<option value="宁夏">宁夏</option>
+					<option value="青海">青海</option>
+					<option value="内蒙古">内蒙古</option>
+					<option value="吉林">吉林</option>
+					<option value="黑龙江">黑龙江</option>
+					<option value="新疆">新疆</option>
+					<option value="西藏">西藏</option>
+				</select>
+			</div>
+			<div id="WeightDiv" hidden onchange="changeWeight()" style="margin-top:10px;">
+				填写商品重量：
+				<input id="WeightInput" style="width:106px;" />
+			</div>
+			<div id="PriceDiv" hidden>
+				<br />
+				<button onclick="calculate()">计算运费</button>
+				<p id="Price">￥:0</p>
+			</div>
+		</div>
+		<div>
+			<img src="img/freight.png" style=""/>
+		</div>
+	</div>
+	<script>
+		function changeIsSameCity() {
+			type = document.getElementById("IsSameCitySelector").value;
+			if (type === "1") {//选择同城
+				document.getElementById("SelectCityDiv").style.display = "block";
+				document.getElementById("SelectProvinceDiv").style.display = "none";
+				document.getElementById("WeightDiv").style.display = "none";
+				document.getElementById("PriceDiv").style.display = "none";
+			}
+			else if (type === "0") {//选择非同城
+				document.getElementById("SelectCityDiv").style.display = "none";
+				document.getElementById("SelectProvinceDiv").style.display = "block";
+				document.getElementById("WeightDiv").style.display = "none";
+				document.getElementById("PriceDiv").style.display = "none";
+			}
+			else {
+				document.getElementById("SelectCityDiv").style.display = "none";
+				document.getElementById("SelectProvinceDiv").style.display = "none";
+				document.getElementById("WeightDiv").style.display = "none";
+				document.getElementById("PriceDiv").style.display = "none";
+			}
+			clear(2);
+		}
+
+		function changePlace(data) {
+			type = data === 1 ? document.getElementById("CitySelector").value : document.getElementById("ProvinceSelector").value;
+			console.log("type:");
+			console.log(type);
+			if (type === "-1") {
+				document.getElementById("WeightDiv").style.display = "none";
+				document.getElementById("PriceDiv").style.display = "none";
+			}
+			else {
+				document.getElementById("WeightDiv").style.display = "block";
+				document.getElementById("PriceDiv").style.display = "none";
+			}
+			clear(1);
+		}
+
+		function changeWeight() {
+			value = document.getElementById("WeightInput").value;
+			if (value === "") {
+				document.getElementById("PriceDiv").style.display = "none";
+			}
+			else {
+				document.getElementById("PriceDiv").style.display = "block";
+			}
+			clear(0);
+		}
+
+		function clear(data) {
+			/*
+			 * data:
+			 * 0：清空售价
+			 * 1：清空售价 + 重量
+			 * 2：清空售价 + 重量 + 城市省份
+			 */
+			document.getElementById("Price").innerText = "￥:0";
+			if (data >= 1) {
+				document.getElementById("WeightInput").value = "";
+			}
+			if (data >= 2) {
+				document.getElementById("CitySelector").value = "-1";
+				document.getElementById("ProvinceSelector").value = "-1";
+			}
+		}
+
+		function calculate() {
+			//创建核心对象
+			xmlhttp = null;
+			if (window.XMLHttpRequest) { // code for Firefox, Opera, IE7, etc.
+				xmlhttp = new XMLHttpRequest();
+			} else if (window.ActiveXObject) { // code for IE6, IE5
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			//编写回调函数
+			xmlhttp.onreadystatechange = function () {
+				if (xmlhttp.readyState === 4) {
+					if (xmlhttp.status === 200) {
+						document.getElementById("Price").innerText = "￥：" + xmlhttp.responseText;
+					}
+					else {
+						alert("未知错误!");
+					}
+				}
+			}
+			//open设置请求方式和请求路径
+			where = document.getElementById("IsSameCitySelector").value;
+			place = ""
+			if (where == "1") {
+				place = document.getElementById("CitySelector").value;
+			}
+			else {
+				place = document.getElementById("ProvinceSelector").value;
+			}
+			const url = "/freight?place=" + place + "&weight=" + document.getElementById("WeightInput").value;
+			xmlhttp.open("get", url); //一个servlet，后面还可以写是否同步
+			//send 发送
+			xmlhttp.send();
+		}
+	</script>
+</body>
+</html>

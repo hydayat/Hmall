@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>中通运费计算</title>
+</head>
+<body style="background-image:url(img/tree.jpg);background-size:100%;">
+	<h1 align="center">中通运费计算</h1>
+	<div style="display:flex;justify-content:space-between;margin:0 auto;background-color: rgba(255,255,255,0.6);padding:10px;width:75%;">
+		<div>
+			<h2>始发地</h2>
+			<p>因商家在广东东莞，故始发地默认为广州东莞</p>
+			<h2>配送信息</h2>
+			<div style="margin-bottom:10px;">
+				请选择收货地址
+				<select id="Selector" style="width:110px;">
+					<option value="-1">--</option>
+					<option value="广东">广东</option>
+					<option value="福建">福建</option>
+					<option value="广西">广西</option>
+					<option value="江西">江西</option>
+					<option value="湖南">湖南</option>
+					<option value="海南">海南</option>
+					<option value="贵州">贵州</option>
+					<option value="安徽">安徽</option>
+					<option value="湖北">湖北</option>
+					<option value="重庆">重庆</option>
+					<option value="四川">四川</option>
+					<option value="云南">云南</option>
+					<option value="河南">河南</option>
+					<option value="上海">上海</option>
+					<option value="江苏">江苏</option>
+					<option value="浙江">浙江</option>
+					<option value="北京">北京</option>
+					<option value="天津">天津</option>
+					<option value="辽宁">辽宁</option>
+					<option value="陕西">陕西</option>
+					<option value="河北">河北</option>
+					<option value="山西">山西</option>
+					<option value="山东">山东</option>
+					<option value="甘肃">甘肃</option>
+					<option value="宁夏">宁夏</option>
+					<option value="青海">青海</option>
+					<option value="内蒙古">内蒙古</option>
+					<option value="吉林">吉林</option>
+					<option value="黑龙江">黑龙江</option>
+					<option value="新疆">新疆</option>
+					<option value="香港">香港</option>
+					<option value="台湾">台湾</option>
+					<option value="澳门">澳门</option>
+					<option value="珠三角">珠三角</option>
+				</select>
+			</div>
+			<div>
+				请填写商品重量
+				<input id="WeightInput" style="width:106px;" />
+			</div>
+			<br />
+			<button onclick="calculate()">计算运费</button>
+			<p id="Price">￥:0</p>
+		</div>
+		<div>
+			<img src="img/freight2.jpg" />
+		</div>
+	</div>
+	<script>
+		function calculate() {
+			//创建核心对象
+			xmlhttp = null;
+			if (window.XMLHttpRequest) { // code for Firefox, Opera, IE7, etc.
+				xmlhttp = new XMLHttpRequest();
+			} else if (window.ActiveXObject) { // code for IE6, IE5
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			//编写回调函数
+			xmlhttp.onreadystatechange = function () {
+				if (xmlhttp.readyState === 4) {
+					if (xmlhttp.status === 200) {
+						document.getElementById("Price").innerText = "￥：" + xmlhttp.responseText;
+					}
+					else {
+						alert("未知错误!");
+					}
+				}
+			}
+			//open设置请求方式和请求路径
+			place = document.getElementById("Selector").value;
+			weight = document.getElementById("WeightInput").value
+			const url = "/freight2?place=" + place + "&weight=" + weight;
+			xmlhttp.open("get", url);
+			//send 发送
+			xmlhttp.send();
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Create Order</title>
+		<link rel="stylesheet" type="text/css" href="css/createOrder.css">
+	</head>
+	<body class="Body">
+		<div class="InlinePart2">
+			<h1 align="center" class="Title">H-Mall</h1>
+		</div>
+		<div class="User">
+			<div class="UserInfo">
+				<div id="Username" class="Username"></div>
+				<div>
+					<button class="AccountButton" onclick="showCart()">Cart</button>
+					<button class="AccountButton" onclick="showOrder()">Order</button>
+				</div>
+			</div>
+			<div class="Avator" id="Avator"></div>
+			<button style="float:right;width:75px;" onclick="document.location.href='changeAvator.html'">更改头像</button>
+		</div>
+		<hr width="90%" color="antiquewhite">
+		<div class="MainContent">
+			<div class="InlinePart">
+				<button class="BackButton" onclick="back()"> << Back</button>
+				<h1 class="CartTitle" align="center">Create an Order</h1>
+				<p class="AddCartBody">
+					If you can't wait to buy our products, then you can create an order in which you need to specify the amount you would like to purchase. Our staff will deal with your order as soon as possible.
+				</p>
+			</div>
+			<div class="InlinePart">
+				<br><br><br><br>
+				<div class="AddCartForm">
+					<div class="GoodContent">
+						<div id="Img" class="GoodImg"></div>
+						<div class="GoodInfo">
+							<h1 id="GoodName" align="center"></h1>
+							<hr>
+							<div class="Time">
+								<div class="TimeTag">Time:</div>
+								<div id="Time" class="TimeContent"></div>
+							</div>
+							<hr>
+							<div class="Price">
+								<div class="PriceTag">Price:</div>
+								<div id="Price" class="PriceNumber">￥50</div>
+							</div>
+							<hr>
+							<div class="Amount">
+								<div class="AmountTag">Amount:</div>
+								<button class="AlgoButton" onclick="decrease()">-</button>
+								<input id="Amount" class="AmountInput" value="0" oninput="value=value.replace(/[^\d]/g,'')" onchange="updateTotal()" />
+								<button class="AlgoButton" onclick="increase()">+</button>
+							</div>
+							<hr>
+							<div class="Total">
+								<div class="TotalTag">Total:</div>
+								<div id="TotalAmount" class="TotalAmount">￥0</div>
+							</div>
+							<br>
+							<button class="AddButton" onclick="createOrder()">Create an Order</button>
+							<div style="margin-left:25px;margin-top:5px;">
+								查询物流价格:
+								<select id="FreightSelector" onchange="calculate()">
+									<option value="0">--</option>
+									<option value="1">顺丰</option>
+									<option value="2">中通</option>
+									<option value="3">圆通</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			function calculate() {
+				type = document.getElementById("FreightSelector").value;
+				console.log(type);
+				if (type === "1") {
+					document.location.href = 'freight.html';
+				}
+				else if (type === "2") {
+					document.location.href = 'freight2.html';
+				}
+				else if (type === "3") {
+					document.location.href = 'freight3.html';
+				}
+			}
+		</script>
+		<script src="js/updateUsername.js"></script>
+		<script src="js/createOrder.js"></script>
+		<script src="js/account.js"></script>
+	</body>
+</html>

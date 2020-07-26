@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Change Avator</title>
+</head>
+<body style="background-image:url(img/crow.jpg);background-size:100%;">
+	<h1 align="center" style="color: #FFFFFF;font-size:50px;">更改头像</h1>
+	<h3 align="center" style="color: #FFFFFF;">请上传图片(只能为jpg)</h3>
+	<div style="margin:10px auto;width:300px;">
+		<input type="file" accept="image/*" id="TmpAvator" />
+		<button onclick="uploadTmpAvator()">submit</button>
+	</div>
+	<div id="Step2" style="visibility:hidden;display:flex;justify-content:space-around;width:80%;margin:0 auto;background-color: rgba(255,255,255,0.7);padding:10px;">
+		<div>
+			<h2>预览原始图片</h2>
+            <br />
+			<div style="margin-top: 23px;">
+				<img style="width:400px;height:400px" id="Preview" src="img/emptyPreview.jpg" />
+			</div>
+		</div>
+		<div>
+			<h2>添加滤镜</h2>
+			请选择滤镜类型：
+			<select id="FilterSelector" style="width:100px;" onchange="changeFilter()">
+				<option value="0">--</option>
+				<option value="1">Erode</option>
+				<option value="2">Blur</option>
+				<option value="3">Edge</option>
+			</select>
+			<div style="margin-top:20px;">
+				<img style="width:400px;height:400px" id="ResultImg" src="img/emptyPreview.jpg" />
+			</div>
+			<div style="margin-top:20px;">
+				<button onclick="setAvator()">设置为头像</button>
+			</div>
+		</div>
+    </div>
+    
+    <script>
+        //上传待处理的图片
+        function uploadTmpAvator() {
+            //获取要上传的头像文件
+            file = (document.getElementById("TmpAvator").files)[0];
+
+            //创建核心对象
+            xmlhttp = null;
+            if (window.XMLHttpRequest) { // code for Firefox, Opera, IE7, etc.
+                xmlhttp = new XMLHttpRequest();
+            } else if (window.ActiveXObject) { // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            //编写回调函数
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState === 4) {
+                    if (xmlhttp.status === 200) {
+                        alert("上传头像成功!");
+                        document.getElementById("Preview").src = xmlhttp.responseText;
+						document.getElementById("ResultImg").src = xmlhttp.responseText;
+						document.getElementById("Step2").style.visibility = "visible";
+                    }
+                    else {
+                        alert("上传头像失败!");
+                    }
+                }
+            }
+            //open设置请求方式和请求路径
+            xmlhttp.open("post", "/tmpAvator", true); //一个servlet，后面还可以写是否同步
+            //设置发送数据为表单
+            //xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            //send 发送
+            formData = new FormData();
+            formData.append("file", file);
+            xmlhttp.send(formData);
+        }
+
+        //改变滤镜
+        function changeFilter() {
+            //获取滤镜类型
+            type = document.getElementById("FilterSelector").value;
+
+            //创建核心对象
+            xmlhttp = null;
+            if (window.XMLHttpRequest) { // code for Firefox, Opera, IE7, etc.
+                xmlhttp = new XMLHttpRequest();
+            } else if (window.ActiveXObject) { // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            //编写回调函数
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState === 4) {
+                    if (xmlhttp.status === 200) {
+						alert("成功添加滤镜!");
+						console.log(xmlhttp.responseText);
+						document.getElementById("ResultImg").src = xmlhttp.responseText;
+                    }
+                    else {
+                        alert("添加滤镜失败!");
+                    }
+                }
+            }
+            //open设置请求方式和请求路径
+            xmlhttp.open("get", "/tmpAvator?type=" + type, true); //一个servlet，后面还可以写是否同步
+            //send 发送
+            xmlhttp.send();
+		}
+
+		function setAvator() {
+           //创建核心对象
+            xmlhttp = null;
+            if (window.XMLHttpRequest) { // code for Firefox, Opera, IE7, etc.
+                xmlhttp = new XMLHttpRequest();
+            } else if (window.ActiveXObject) { // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            //编写回调函数
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState === 4) {
+                    if (xmlhttp.status === 200) {
+						alert("设置头像成功!");
+						document.location.href = "store.html";
+                    }
+                    else {
+                        alert("设置头像失败!");
+                    }
+                }
+            }
+			//open设置请求方式和请求路径
+            type = document.getElementById("FilterSelector").value;
+			xmlhttp.open("put", "/avator?type=" + type, true); //一个servlet，后面还可以写是否同步
+            //send 发送
+            xmlhttp.send();
+		}
+    </script>
+</body>
+</html>

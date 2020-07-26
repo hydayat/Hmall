@@ -1,0 +1,126 @@
+.Body {
+    background-image: url(../img/patato.jpg);
+    background-size: 100%;
+}
+.TitleDiv {
+    display: inline-block;
+    width: 45%;
+}
+.Title{
+    color: #FFFFFF;
+    font-size: 50px;
+}
+.User{
+    height: 80px;
+    width: 200px;
+    background-color: rgba(255,255,255,0.5);
+    float: right;
+    margin-right: 80px;
+    margin-top: 20px;
+    padding: 5px;
+}
+.UserInfo{
+    float: left;
+    width: 120px;
+    height: 100%;
+    text-align: center;
+}
+.Username{
+    color: black;
+    font-size: 20px;
+    margin-top: 5px;
+}
+.Avator{
+    height: 100%;
+    width: 75px;
+    float: right;
+    background-image: url(../img/avator.jpg);
+    background-size: 100% 100%;
+    border-radius:50%
+}
+.AccountButton{
+    width: 50px;
+    margin-top: 15px;
+}
+.BelowDiv {
+    display: flex;
+    justify-content: space-around;
+}
+.CartDiv {
+    width: 90%;
+}
+.CartBar {
+    height: 40px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    font-weight: 900;
+    padding-top: 8px;
+}
+.CartContent {
+    height: 550px;
+    margin-top: 20px;
+    padding-top: 8px;
+}
+.CartBar {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+}
+.CartContent {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+}
+.Item {
+    width: 98%;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    font-weight: 400;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+.ItemImg {
+    height: 100%;
+    width: 100px;
+    /* background-image: url(img/Good/M1A1.jpg); */
+    background-size: 100% 100%;
+    margin: 0 auto;
+}
+.Atom {
+    height: 100%;
+    width: 16%;
+    display: flex;
+    justify-content: space-around;
+    /* background: #CCCCCC; */
+}
+.Total {
+    color: #ff0000;
+}
+.Price, .Total, .GoodName, .Amount {
+    margin-top: 30px;
+    font-size: 20px;
+}
+.BuyButton, .DeleteButton, .BackButton {
+    width: 80px;
+    height: 35px;
+    margin-top: 10px;
+    border: none;
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+}
+.BuyButton {
+    background-color: darkseagreen;
+}
+.DeleteButton {
+    background-color: brown;
+}
+.BackButton {
+    margin-left: 20px;
+    margin-bottom: 0px;
+    background-color: #4169E1;
+}

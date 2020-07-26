@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Add Cart</title>
+		<link rel="stylesheet" type="text/css" href="css/addCart.css">
+	</head>
+	<body class="Body">
+		<div class="InlinePart2">
+			<h1 align="center" class="Title">H-Mall</h1>
+		</div>
+		<div class="User">
+			<div class="UserInfo">
+				<div id="Username" class="Username"></div>
+				<div>
+					<button class="AccountButton" onclick="showCart()">Cart</button>
+					<button class="AccountButton" onclick="showOrder()">Order</button>
+				</div>
+			</div>
+			<div class="Avator" id="Avator"></div>
+			<button style="float:right;width:75px;" onclick="document.location.href='changeAvator.html'">更改头像</button>
+		</div>
+		<hr width="90%" color="antiquewhite">
+		<div class="MainContent">
+			<div class="InlinePart">
+				<button class="BackButton" onclick="back()"> << Back</button>
+				<h1 class="CartTitle" align="center">Add To Shopping Cart</h1>
+				<p class="AddCartBody">
+					If you have your eye on our items but are not sure to buy it at present, then you can add it to your shopping chart in that you may purchase it in the future.
+				</p>
+			</div>
+			<div class="InlinePart">
+				<br><br><br><br>
+				<div class="AddCartForm">
+					<div class="GoodContent">
+						<div id="Img" class="GoodImg"></div>
+						<div class="GoodInfo">
+							<h1 id="GoodName" align="center"></h1>
+							<hr>
+							<div class="Price">
+								<div class="PriceTag">Price:</div>
+								<div id="Price" class="PriceNumber"></div>
+							</div>
+							<hr>
+							<div class="Amount">
+								<div class="AmountTag">Amount:</div>
+								<button class="AlgoButton" onclick="decrease()">-</button>
+								<input id="Amount" class="AmountInput" value="0" oninput = "value=value.replace(/[^\d]/g,'')"/>
+								<button class="AlgoButton" onclick="increase()">+</button>
+							</div>
+							
+							<hr>
+							<br>
+							<br>
+							<button class="AddButton" onclick="addCart()">Add To shopping Cart</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/updateUsername.js"></script>
+		<script src="js/addCart.js"></script>
+		<script src="js/account.js"></script>
+	</body>
+</html>

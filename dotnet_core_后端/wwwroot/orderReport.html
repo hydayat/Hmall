@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Report</title>
+</head>
+<body style="background-image:url(img/farm.jpg);background-size:100%;">
+    <h1 align="center" style="font-size:50px;">订单报告</h1>
+    <!--内容：
+        1.总购买金额，订单总数
+        2.单笔最高/最低购买金额，单笔最高/最低购买数量
+        3.最近/第一次购买时间
+        4.平均每单购买金额/数量
+        5.分坦克类型统计销量-->
+	<div style="display: flex;justify-content: space-between;background-color:rgba(255,255,255,0.7);padding:20px;width:50%;margin:0 auto;">
+		<div>
+			<h2>基本表</h2>
+			<table border="1">
+				<tr>
+					<th style="width:150px;">项目</th>
+					<th style="width:150px;">结果</th>
+				</tr>
+				<tr>
+					<td>总购买金额</td>
+					<td id="TotalCash" align="right">￥0</td>
+				</tr>
+				<tr>
+					<td>订单总数</td>
+					<td id="OrderCnt" align="right">0</td>
+				</tr>
+				<tr>
+					<td>单笔最高购买金额</td>
+					<td id="MaxCash" align="right">￥0</td>
+				</tr>
+				<tr>
+					<td>单笔最低购买金额</td>
+					<td id="MinCash" align="right">￥0</td>
+				</tr>
+				<tr>
+					<td>单笔最高购买数量</td>
+					<td id="MaxAmount" align="right">0</td>
+				</tr>
+				<tr>
+					<td>单笔最低购买数量</td>
+					<td id="MinAmount" align="right">0</td>
+				</tr>
+				<tr>
+					<td>平均每单购买金额</td>
+					<td id="MeanCash" align="right">￥0</td>
+				</tr>
+				<tr>
+					<td>平均每单购买数量</td>
+					<td id="MeanAmount" align="right">0</td>
+				</tr>
+				<tr>
+					<td>最近购买时间</td>
+					<td id="MaxTime" align="right">?</td>
+				</tr>
+				<tr>
+					<td>第一次购买时间</td>
+					<td id="MinTime" align="right">?</td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<h2>商品购买量汇总表</h2>
+			<table border="1">
+				<tr>
+					<th style="width:150px;">商品类别</th>
+					<th style="width:150px;">购买量</th>
+				</tr>
+				<tr>
+					<td>M1A1</td>
+					<td id="M1A1" align="center">0</td>
+				</tr>
+				<tr>
+					<td>M1A2</td>
+					<td id="M1A2" align="center">0</td>
+				</tr>
+				<tr>
+					<td>M41</td>
+					<td id="M41" align="center">0</td>
+				</tr>
+				<tr>
+					<td>MarderIII</td>
+					<td id="MarderIII" align="center">0</td>
+				</tr>
+				<tr>
+					<td>Merkava</td>
+					<td id="Merkava" align="center">0</td>
+				</tr>
+				<tr>
+					<td>Panther</td>
+					<td id="Panther" align="center">0</td>
+				</tr>
+				<tr>
+					<td>Wespe</td>
+					<td id="Wespe" align="center">0</td>
+				</tr>
+				<tr>
+					<td>T-55A</td>
+					<td id="T55A" align="center">0</td>
+				</tr>
+				<tr>
+					<td>StugIII</td>
+					<td id="StugIII" align="center">0</td>
+				</tr>
+				<tr>
+					<td>M109A3G</td>
+					<td id="M109A3G" align="center">0</td>
+				</tr>
+				<tr>
+					<td>Challenger</td>
+					<td id="Challenger" align="center">0</td>
+				</tr>
+				<tr>
+					<td>Chieftain</td>
+					<td id="Chieftain" align="center">0</td>
+				</tr>
+				<tr>
+					<td>Hetzer</td>
+					<td id="Hetzer" align="center">0</td>
+				</tr>
+				<tr>
+					<td>JS3-Stalin</td>
+					<td id="JS3" align="center">0</td>
+				</tr>
+				<tr>
+					<td>M4-Sherman</td>
+					<td id="M4" align="center">0</td>
+				</tr>
+				<tr>
+					<td>M26-Pershing</td>
+					<td id="M26" align="center">0</td>
+				</tr>
+				<tr>
+					<td>M60A1</td>
+					<td id="M60A1" align="center">0</td>
+				</tr>
+				<tr>
+					<td>M2A2</td>
+					<td id="M2A2" align="center">0</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<script>
+		window.onload = function () {
+			//创建核心对象
+			xmlhttp = null;
+			if (window.XMLHttpRequest) { // code for Firefox, Opera, IE7, etc.
+				xmlhttp = new XMLHttpRequest();
+			} else if (window.ActiveXObject) { // code for IE6, IE5
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			//编写回调函数
+			xmlhttp.onreadystatechange = function () {
+				if (xmlhttp.readyState === 4) {
+					if (xmlhttp.status === 200) {
+						console.log("response的内容为：");
+						console.log(xmlhttp.responseText);
+
+						//更新界面元素
+						report = JSON.parse(xmlhttp.responseText);
+						console.log(report);
+
+						document.getElementById("TotalCash").innerText = report.totalCash;
+						document.getElementById("OrderCnt").innerText = report.orderCnt;
+						document.getElementById("MaxCash").innerText = report.maxCash;
+						document.getElementById("MinCash").innerText = report.minCash;
+						document.getElementById("MaxAmount").innerText = report.maxAmount;
+						document.getElementById("MinAmount").innerText = report.minAmount;
+						document.getElementById("MeanCash").innerText = report.meanCash;
+						document.getElementById("MeanAmount").innerText = report.meanAmount;
+						document.getElementById("MinTime").innerText = report.minTime.replace(/T/," ");
+						document.getElementById("MaxTime").innerText = report.maxTime.replace(/T/, " ");
+
+						document.getElementById("M1A1").innerText = report.m1A1;
+						document.getElementById("M1A2").innerText = report.m1A2;
+						document.getElementById("M41").innerText = report.m41;
+						document.getElementById("MarderIII").innerText = report.marderIII;
+						document.getElementById("Merkava").innerText = report.merkava;
+						document.getElementById("Panther").innerText = report.panther;
+						document.getElementById("Wespe").innerText = report.wespe;
+						document.getElementById("T55A").innerText = report.t55A;
+						document.getElementById("StugIII").innerText = report.stugIII;
+						document.getElementById("M109A3G").innerText = report.m109A3G;
+						document.getElementById("Challenger").innerText = report.challenger;
+						document.getElementById("Chieftain").innerText = report.chieftain;
+						document.getElementById("Hetzer").innerText = report.hetzer;
+						document.getElementById("JS3").innerText = report.jS3;
+						document.getElementById("M4").innerText = report.m4;
+						document.getElementById("M26").innerText = report.m26;
+						document.getElementById("M60A1").innerText = report.m60A1;
+						document.getElementById("M2A2").innerText = report.m2A2;
+					}
+					else {
+						alert("未知错误!");
+					}
+				}
+			}
+			//open设置请求方式和请求路径
+			xmlhttp.open("get", "/orderReport",false); //一个servlet，后面还可以写是否同步
+			//send 发送
+			xmlhttp.send();
+		}
+	</script>
+</body>
+</html>
